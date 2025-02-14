@@ -1,23 +1,55 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import '../Styles/Profile.css';
+import React, { useState } from "react";
+import "../Styles/Profile.css"
 
-const Profile = () => {
+function App() {
+  const [mobile, setMobile] = useState("");
+
+  const handleInputChange = (e) => {
+    setMobile(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Mobile Number Submitted: " + mobile);
+  };
+
   return (
-    <div className="profile-container">
-      <form action="/form-register"  className="profile-form" >
-        <h2>Registration Page</h2>
-        <input type="text"placeholder="First Name" name="First_name" required className="form-input" />
-        <input type="text" placeholder="Last Name"  name="Last_name"  required className="form-input"/>
-        <input type="email" placeholder="Email"name="email" required className="form-input"/>
-        <input type="text" placeholder="Mobile Number"name="mobilenumber" required className="form-input"/>
-        <input type="password" placeholder="New Password" name="newPass" required className="form-input"  />
-        <input type="password" placeholder="Confirm Password" name="cnfpass" required className="form-input"/>
-        <Link to="/login" className="login-link"> Already Registered? Login Here </Link>
-        <input type="submit" className="submit-btn" />
-      </form>
+    <div className="login-container d-flex justify-content-center align-items-center vh-100">
+      <div className="login-card text-center p-4 shadow">
+        
+        <div className="avatar-container mb-3">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Avatar"
+            className="avatar-img"/>
+          <h4 className="login-title mt-2">SIGN IN</h4>
+          <p className="login-subtitle text-muted">sign in to proceed further</p>
+        </div>
+
+        
+        <form onSubmit={handleSubmit}>
+          <div className="form-group mb-4">
+            <label htmlFor="mobile" className="form-label text-start">
+              Mobile Number
+            </label>
+            <input
+              type="text"
+              id="mobile"
+              className="form-control border-0 border-bottom"
+              value={mobile}
+              onChange={handleInputChange}
+              placeholder="Enter your mobile number"
+              required />
+          </div>
+          <button
+            type="submit"
+            className="btn btn-secondary w-100 py-2" >
+            NEXT
+          </button>
+        </form>
+      </div>
     </div>
   );
-};
+}
 
-export default Profile;
+export default App;

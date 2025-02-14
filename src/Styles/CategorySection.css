@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+}
+
+.category-section {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.category-item {
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+
+  padding: 0px 10px;
+}
+
+.category-item.active {
+  
+  text-decoration: underline;
+
+}
+
+.image-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.circle-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: fill;
+  border: 2px solid transparent;
+  transition: all 0.3s ease-in-out;
+  justify-content: center;
+}
+
+.circle-img:hover {
+  border-color: #000;
+}
+
+.circle-img + p {
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: 400;
+  color: #333;
+}

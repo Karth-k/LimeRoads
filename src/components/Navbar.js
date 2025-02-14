@@ -3,7 +3,7 @@
   import { IoSearch } from "react-icons/io5";
   import { BiSolidUser } from "react-icons/bi";
   import { HiShoppingCart } from "react-icons/hi";
-  import './Navbar.css'
+  import '../Styles/Navbar.css'
 
 
   const Navbar = () =>{
@@ -53,9 +53,14 @@
             <div className="dropdown-menu">
               <div className="dropdown-category">
                 <div className="dropdown-main">Ethnic</div>
-                <Link to="/women/clothing/tops" className="dropdown-item">Kurtas</Link>
-                <Link to="/women/clothing/dresses" className="dropdown-item">Sarees</Link>
-                <Link to="/women/clothing/jeans" className="dropdown-item">Pants</Link>
+                <Link to="/women/clothing/kurta" className="dropdown-item">Kurtas</Link>
+                <Link to="/women/clothing/saree" className="dropdown-item">Sarees</Link>
+              </div>
+              <div className="dropdown-category">
+                <div className="dropdown-main">Western Wear</div>
+                <Link to="/women/clothing/shirt" className="dropdown-item">Shirts</Link>
+                <Link to="/women/clothing/thshirt" className="dropdown-item">Tshirts</Link>
+                <Link to="/women/clothing/tops" className="dropdown-item">Tops</Link>
               </div>
               <div className="dropdown-category">
               <div className="dropdown-main">Footwear</div>
@@ -81,19 +86,19 @@
           <div className="dropdown-menu">
           <div className="dropdown-category">
             <div className="dropdown-main">Clothing</div>
-            <Link to="/men/clothing/tops" className="dropdown-item">Tops</Link>
-            <Link to="/men/clothing/dresses" className="dropdown-item">Dresses</Link>
+            <Link to="/men/clothing/shirts" className="dropdown-item">Shirts</Link>
+            <Link to="/men/clothing/thsirt" className="dropdown-item">T Shirts</Link>
             <Link to="/men/clothing/jeans" className="dropdown-item">Jeans</Link>
+            <Link to="/men/clothing/suits" className="dropdown-item">Suits</Link>
           </div>
           <div className="dropdown-category">
           <div className="dropdown-main">Footwear</div>
             <Link to="/men/footwear/sandals" className="dropdown-item">Sandals</Link>
-            <Link to="/men/footwear/sneakers" className="dropdown-item">Sneakers</Link>
+            <Link to="/men/footwear/formalshoes" className="dropdown-item">Formal Shoes</Link>
           </div>
           <div className="dropdown-category">
             <div className="dropdown-main">Accessories</div>
-            <Link to="/men/accessories/bags" className="dropdown-item">Bags</Link>
-            <Link to="/men/accessories/jewelry" className="dropdown-item">Jewelry</Link>
+            <Link to="/men/accessories/watch" className="dropdown-item">Watch</Link>
           </div>
         </div>
         )}
@@ -108,15 +113,17 @@
       {openDropdown === "kids" && (
           <div className="dropdown-menu">
           <div className="dropdown-category">
-            <div className="dropdown-main">Clothing</div>
-            <Link to="/kids/clothing/tops" className="dropdown-item">Tops</Link>
-            <Link to="/kids/clothing/dresses" className="dropdown-item">Dresses</Link>
-            <Link to="/kids/clothing/jeans" className="dropdown-item">Jeans</Link>
+            <div className="dropdown-main">Girls</div>
+            <Link to="/kids/clothing/frocs" className="dropdown-item">Frocks</Link>
+            <Link to="/kids/clothing/tshirt" className="dropdown-item">T shirt</Link>
+            <Link to="/kids/clothing/ethnicwear" className="dropdown-item">Ethnic Wear</Link>
+            <Link to="/kids/clothing/twinset" className="dropdown-item">Twin sets</Link>
           </div>
           <div className="dropdown-category">
-          <div className="dropdown-main">Footwear</div>
-            <Link to="/kids/footwear/sandals" className="dropdown-item">Sandals</Link>
-            <Link to="/kids/footwear/sneakers" className="dropdown-item">Sneakers</Link>
+          <div className="dropdown-main">Boys</div>
+            <Link to="/kids/footwear/tshirt" className="dropdown-item">Tshirts</Link>
+            <Link to="/kids/footwear/ethnic" className="dropdown-item">Ethnic Wear</Link>
+            <Link to="/kids/clothing/twinsets" className="dropdown-item">Twin Sets</Link>
           </div>
           <div className="dropdown-category">
             <div className="dropdown-main">Accessories</div>
