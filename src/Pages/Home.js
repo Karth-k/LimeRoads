@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "../components/Carousel";
 import CategorySection from "../components/CategorySection";
 import LandingPage from "./Landingpage";
-// import Banner from "../components/Banner";
-// import CategoryDataRenderer from "../components/CategoryDataRenderer";
+
 
 const Home = () => {
-  return (<div>
-      <CategorySection/>
+  const [gender, setGender] = useState("Women");
+  const [type, setType] = useState("My Feed"); 
 
-        <Carousel/>
-        <LandingPage/>
-    
+
+  return (
+  
+      <div>
+      
+      <CategorySection setGender={setGender} setType={setType} />
+      <Carousel />
+      <LandingPage gender={gender} type={type} />
     </div>
   );
 };

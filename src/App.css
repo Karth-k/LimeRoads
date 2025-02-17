@@ -1,9 +1,9 @@
 body {
-  background-color: rgb(226, 226, 226) /* Light cream color */
+  background-color: rgb(226, 226, 226) 
 }
 
 .navbar {
-  background-color: white !important; /* Keep navbar white */
+  background-color: white !important;
 }
 
 .App {

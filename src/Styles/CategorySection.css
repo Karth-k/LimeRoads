@@ -6,17 +6,18 @@
   display: flex;
   justify-content: flex-start;
   gap: 20px;
+  border: none; 
+  outline: none;
 }
 
 .category-item {
   background-color: transparent;
-  border: none;
+  border: none; 
+  outline: none; 
   font-size: 15px;
   font-weight: 500;
-
   padding: 0px 10px;
 }
-
 .category-item.active {
   
   text-decoration: underline;
@@ -24,18 +25,23 @@
 }
 
 .image-link {
-  text-decoration: none;
-  color: inherit;
+  border: none;
+  outline: none;
+  background: none; 
 }
 
 .circle-img {
   width: 70px;
+  outline: none;
   height: 70px;
   border-radius: 50%;
   object-fit: fill;
   border: 2px solid transparent;
   transition: all 0.3s ease-in-out;
   justify-content: center;
+}
+.circle-img:hover {
+  border: 2px solid #000; 
 }
 
 .circle-img:hover {

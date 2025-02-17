@@ -7,8 +7,14 @@ import Profile from "../Pages/Profile";
 import Men from "../Pages/Men"
 import Women from "../Pages/Women"
 import Kids from "../Pages/Kids";
-import Homepr from "../Pages/Homepr"
-
+import Homepr from "../Pages/Homepr";
+import Cart from "../Pages/Cart";
+import ProductDetailsPage from '../components/ProductDetailsPage'
+import SubCategoryPage from "../components/SubCategoryPage";
+import CategorySection from "../components/CategorySection";
+import Footer from "../components/Footer";
+// import Landingpage from "../Pages/Landingpage";
+import RelatedProducts from "../Pages/RelatedProducts";
 
 
 const AllRoutes = ()=>{
@@ -22,9 +28,14 @@ const AllRoutes = ()=>{
             <Route path="/women" element={<Women/>}></Route>
             <Route path="/kids" element={<Kids/>}></Route>
             <Route path="/homepr" element={<Homepr/>}></Route>
+            <Route path="/cart" element={<Cart/>}></Route>
+            <Route path="/product/:id" element={<ProductDetailsPage />} />
+            <Route path="/:gender/:model/:type" element={<SubCategoryPage />} />
+            <Route path="/" element={<CategorySection />} />
+            <Route path="/:gender/:model/:type" element={<RelatedProducts />} />
         </Routes>
         
-            
+        <Footer/>
       
     
 

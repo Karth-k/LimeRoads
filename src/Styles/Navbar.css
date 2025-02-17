@@ -1,19 +1,17 @@
-div .navbar {
-    position: sticky !important;
-    top: 0;
+
+.navbar {
+    position: sticky; 
+    top: 0; 
     z-index: 999; 
     background-color: white; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-  }
-
+    padding: 10px 20px; 
+}
 
 .nav-link :hover{
     border-bottom: 4px red;
 }
-/*   
-.nav-item .nav-link:hover {
-    border-bottom: 4px solid red; 
-  } */
+
 
 .dropdown-menu {
     position: absolute;
@@ -60,12 +58,6 @@ div .navbar {
   max-width: 150px; 
   height: 65px;
 }
-@media (max-width: 768px) { 
-  .navbar-logo {
-    max-width: 80px; 
-  }
-}
-
 
 
 .dropdown-menus {
@@ -144,4 +136,9 @@ div .navbar {
 
 .nav-item a:hover {
   color: #ff5722;
+}
+@media (max-width: 768px) { 
+  .navbar-logo {
+    max-width: 80px; 
+  }
 }
