@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/Sidebar.css";
 
-const Sidebar = ({ products, onFilterChange }) => {
+const Sidebar = ({ products = [], onFilterChange }) => {
   const handlePriceFilter = (priceRange) => {
     const filteredProducts = products.filter((product) => {
       if (priceRange === "less500") return product.price < 500;
