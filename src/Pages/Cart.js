@@ -9,9 +9,11 @@ const Cart = () => {
   const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
-  const handleQuantityChange = (id, quantity) => {
-    if (quantity > 0) {
-      dispatch(updateQuantity({ id, quantity }));
+  const handleQuantityChange = (id, selectedSize ,quantity) => {
+    if (quantity < 1) {
+      dispatch(removeFromCart(id));
+    } else {
+      dispatch(updateQuantity({ id, selectedSize  ,quantity }));
     }
   };
 
@@ -37,9 +39,9 @@ const Cart = () => {
                 <p className="item-description">Cotton T-shirt</p>
                 <p className="item-size">Size: {item.selectedSize}</p>
                 <div className="quantity-controls">
-                  <button  className="quantity-btn" onClick={() => handleQuantityChange(item.id, item.quantity - 1)}>-</button>
+                  <button  className="quantity-btn" onClick={() => handleQuantityChange(item.id,item.selectedSize, item.quantity - 1)}>-</button>
                   <span className="quantity-value">{item.quantity}</span>
-                  <button  className="quantity-btn"  onClick={() => handleQuantityChange(item.id, item.quantity + 1)}>+</button>
+                  <button  className="quantity-btn"  onClick={() => handleQuantityChange(item.id, item.selectedSize,item.quantity + 1)}>+</button>
                 </div>
                 <p className="item-price">₹{item.price * item.quantity}</p>
               </div>
