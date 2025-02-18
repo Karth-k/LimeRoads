@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity } from "../Redux/cartSlice";
 import { HiXMark } from "react-icons/hi2";
 import "../Styles/Cart.css";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cart = useSelector(state => state.cart);
@@ -28,11 +29,13 @@ const Cart = () => {
         <div className="cart-items">
           {cart.map(item => (
             <div className="cart-item" key={item.id}>
-              <img src={item.image[0]} alt={item.title} className="cart-item-image" />
+              <Link to={`/product/${item.id}`}>
+                  <img src={item.image[0]} alt={item.title} className="cart-item-image" />
+              </Link>
               <div className="cart-item-details">
                 <p className="item-title">{item.title}</p>
                 <p className="item-description">Cotton T-shirt</p>
-                <p className="item-size">Size: {item.size}</p>
+                <p className="item-size">Size: {item.selectedSize}</p>
                 <div className="quantity-controls">
                   <button  className="quantity-btn" onClick={() => handleQuantityChange(item.id, item.quantity - 1)}>-</button>
                   <span className="quantity-value">{item.quantity}</span>
@@ -45,7 +48,7 @@ const Cart = () => {
           ))}
         </div>
         <div className="back-to-shop">
-          <a href="/">← Back to shop</a>
+          <a href="/">Back to shop</a>
         </div>
       </div>
       <div className="cart-summary">

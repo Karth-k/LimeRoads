@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaHeart, FaWhatsapp } from "react-icons/fa";
-import "../Styles/Women.css";
+import "../Styles/Home.css";
 import {  useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
@@ -33,7 +33,7 @@ const Homepr = () => {
         
         <div className="col-md-9">
           <h1 className="home-title text-center my-4">Home Products</h1>
-          <div className="row">
+          <div className="row" style={{justifyContent:"space-around"}}>
             {products.map((product) => (
               <div className="home-card-container col-md-4 mb-4"  key={product.id} onClick={() => navigate(`/product/${product.id}`)} style={{ cursor: "pointer" }} >
                 <div className="home-card h-100">
@@ -47,8 +47,9 @@ const Homepr = () => {
                       <span className="text-danger"> {product.offer_percent}% off  </span>
                     </div>
                     <div className="d-flex justify-content-center gap-3"> 
-                      <FaHeart  className="home-heart-icon text-danger" style={{ cursor: "pointer" }} onClick={(e) => 
-                          {e.stopPropagation(); }} />
+                      <FaHeart  className="home-heart-icon text-danger" style={{ cursor: "pointer" }} 
+                      onClick={(e) => 
+                        alert(`Liked ${product.title}`)} />
                        <FaWhatsapp className="home-whatsapp-icon text-success" />
                     </div>
                   </div>

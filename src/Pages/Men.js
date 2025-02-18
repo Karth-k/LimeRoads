@@ -8,6 +8,8 @@ import Sidebar from "../components/Sidebar";
 
 const Men = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,14 +18,14 @@ const Men = () => {
 
         console.log("Response Data:", response.data);
 
-        const mensProducts = response.data.products.filter(
-          (product) => product.category.gender === "Men"
-        );
+        const mensProducts = response.data.products.filter( (product) => product.category.gender === "Men" );
 
         console.log("Men's Products:", mensProducts);
 
 
         setProducts(mensProducts);
+        setFilteredProducts(mensProducts); 
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -31,6 +33,10 @@ const Men = () => {
 
     fetchData();
   }, []);
+  const handleFilterChange = (filteredList) => {
+    setFilteredProducts(filteredList);
+  };
+  
 
   return (<>
     <div className="container-fluid">
@@ -40,11 +46,12 @@ const Men = () => {
 
       <div className="row" style={{ justifyContent: "space-around" }}>
         <div className="col-md-3">
-          <Sidebar />
+        <Sidebar products={products} onFilterChange={handleFilterChange} />
+
         </div>
         <div className="col-md-9">
           <div className="row" style={{ justifyContent: "space-around" }}>
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <div className="col-md-4 mb-4" key={product.id}>
                 <Link  to={`/product/${product.id}`}  style={{ textDecoration: "none", color: "inherit" }}>
                   <div className="card h-100">

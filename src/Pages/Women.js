@@ -7,6 +7,7 @@ import Sidebar from "../components/Sidebar";
 
 const Women = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const Women = () => {
         const response = await axios.get("/data.json");
         const WomensProducts = response.data.products.filter((product) => product.category.gender === "Women");
         setProducts(WomensProducts);
+        setFilteredProducts(WomensProducts); 
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -23,18 +25,21 @@ const Women = () => {
     fetchData();
   }, []);
 
+  const handleFilterChange = (filteredList) => {
+    setFilteredProducts(filteredList);
+  };
+
   return (
     <div className="women-container">
       <div className="row" style={{ justifyContent: "space-around" }}>
         <div className="col-md-3">
-          <Sidebar />
+          <Sidebar products={products} onFilterChange={handleFilterChange} />
         </div>
 
-      
         <div className="col-md-9">
           <h1 className="women-title text-center my-4">Women's Products</h1>
           <div className="row">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <div className="women-card-container col-md-4 mb-4" key={product.id}
                 onClick={() => navigate(`/product/${product.id}`)} style={{ cursor: "pointer" }}>
                 <div className="women-card h-100">
@@ -48,12 +53,9 @@ const Women = () => {
                       <span className="text-danger"> {product.offer_percent}% off </span>
                     </div>
                     <div className="d-flex justify-content-center gap-3">
-                      <FaHeart
-                        className="women-heart-icon text-danger"
-                        style={{ cursor: "pointer" }}
+                      <FaHeart className="women-heart-icon text-danger" style={{ cursor: "pointer" }}
                         onClick={(e) => {
-                          alert(`Liked ${product.title}`);
-                        }}/>
+                          alert(`Liked ${product.title}`)}}/>
                       <FaWhatsapp className="women-whatsapp-icon text-success" />
                     </div>
                   </div>

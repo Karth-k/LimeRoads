@@ -1,13 +1,22 @@
-import React from "react";
-import '../Styles/Carousel.css';
+import React, { useEffect } from "react";
+import { Carousel as BootstrapCarousel } from "bootstrap";
+import "../Styles/Carousel.css";
 
 const Carousel = () => {
+    useEffect(() => {
+        const carousels = document.querySelectorAll('.carousel');
+        carousels.forEach(carousel => {
+            new BootstrapCarousel(carousel, {
+                interval: 2000,
+                ride: "carousel"
+            });
+        });
+    }, []);
+
     return (
         <div
             id="carouselExampleControls"
-            className="carousel slide mt-4"
-            data-bs-ride="carousel"
-            data-bs-interval="2000">
+            className="carousel slide mt-4">
             <div className="carousel-inner">
                 <div className="carousel-item active">
                     <div className="carousel-slide-wrapper">

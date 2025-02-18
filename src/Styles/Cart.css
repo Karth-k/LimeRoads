@@ -54,9 +54,9 @@
 }
 
 .cart-item-image {
-    height: 80px;
-    width: 80px;
-    object-fit: cover;
+    height: 120px;
+    width: 120px;
+    object-fit: fill;
     border-radius: 8px;
 }
 
