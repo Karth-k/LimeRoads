@@ -15,6 +15,7 @@ import CategorySection from "../components/CategorySection";
 import Footer from "../components/Footer";
 // import Landingpage from "../Pages/Landingpage";
 import RelatedProducts from "../Pages/RelatedProducts";
+import Buynow from "../Pages/Buynow";
 
 
 const AllRoutes = ()=>{
@@ -33,6 +34,7 @@ const AllRoutes = ()=>{
             <Route path="/:gender/:model/:type" element={<SubCategoryPage />} />
             <Route path="/" element={<CategorySection />} />
             <Route path="/:gender/:model/:type" element={<RelatedProducts />} />
+            <Route path="/BuyNow" element={<Buynow />} />
         </Routes>
         
         <Footer/>

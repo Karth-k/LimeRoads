@@ -69,7 +69,9 @@ const Cart = () => {
           <span>TOTAL PRICE</span>
           <span>₹{total}</span>
         </div>
+        <Link to="/Buynow">
         <button className="checkout-btn">CHECKOUT</button>
+        </Link>
       </div>
     </div>
   );
