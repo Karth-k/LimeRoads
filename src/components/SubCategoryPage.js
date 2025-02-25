@@ -13,8 +13,8 @@ const SubCategoryPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("/data.json");
-        const filteredProducts = response.data.products.filter(
+        const response = await axios.get("http://localhost:5000/api/products");
+        const filteredProducts = response.data.filter(
           (product) => product.category.gender.toLowerCase() === gender.toLowerCase() &&  product.category.type.toLowerCase() === type.toLowerCase());
         setProducts(filteredProducts);
       } catch (error) {

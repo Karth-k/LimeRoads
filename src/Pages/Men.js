@@ -4,7 +4,7 @@ import { FaHeart, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom"; 
 import "../Styles/Sidebar.css";
 import Sidebar from "../components/Sidebar";
-// import Navbar from "../components/Navbar";
+
 
 const Men = () => {
   const [products, setProducts] = useState([]);
@@ -14,11 +14,11 @@ const Men = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/data.json");
+        const response = await axios.get("http://localhost:5000/api/products");
 
         console.log("Response Data:", response.data);
 
-        const mensProducts = response.data.products.filter( (product) => product.category.gender === "Men" );
+        const mensProducts = response.data.filter( (product) => product.category.gender === "Men" );
 
         console.log("Men's Products:", mensProducts);
 
@@ -50,10 +50,11 @@ const Men = () => {
 
         </div>
         <div className="col-md-9">
+        <h1 className="men-title text-center my-4">Men's Products</h1>
           <div className="row" style={{ justifyContent: "space-around" }}>
             {filteredProducts.map((product) => (
-              <div className="col-md-4 mb-4" key={product.id}>
-                <Link  to={`/product/${product.id}`}  style={{ textDecoration: "none", color: "inherit" }}>
+              <div className="col-md-4 mb-4" key={product._id}>
+                <Link  to={`/product/${product._id}`}  style={{ textDecoration: "none", color: "inherit" }}>
                   <div className="card h-100">
                     <img  src={product.image[0]} className="card-img-top"  alt={product.title}/>
                     <div className="card-body text-center">

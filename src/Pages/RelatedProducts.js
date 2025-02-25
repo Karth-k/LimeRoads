@@ -8,9 +8,9 @@ const RelatedProducts = () => {
 
   useEffect(() => {
     axios
-      .get("/data.json")
+      .get("http://localhost:5000/api/products")
       .then((response) => {
-        const filteredProducts = response.data.products.filter((product) => {
+        const filteredProducts = response.data.filter((product) => {
           return (
             product.category.gender === gender && product.title === model &&(type === "all" || product.category.type === type)
           )});
@@ -25,7 +25,7 @@ const RelatedProducts = () => {
       <h2>Related Products</h2>
       <div className="row mt-4">
         {products.map((product) => (
-          <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div key={product._id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div className="card h-100"
               style={{
                 position: "relative",

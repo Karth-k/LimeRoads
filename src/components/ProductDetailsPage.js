@@ -31,24 +31,55 @@ const ProductDetailsPage = () => {
   const [ratingValue, setRatingValue] = useState(2);
   const [hover, setHover] = useState(-1);
 
+
+
+
+
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get("/data.json");
-        const productData = response.data.products.find(item => item.id === parseInt(id));
+        const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const productData = response.data;
         setProduct(productData);
-        const filteredProducts = response.data.products.filter(item => 
+  
+        const similarResponse = await axios.get("http://localhost:5000/api/products");
+  
+        const filteredProducts = similarResponse.data.filter(item =>
           item.category.type === productData.category.type &&
           item.category.gender === productData.category.gender &&
-          item.id !== productData.id
+          item._id.toString() !== productData._id.toString()
         );
+  
         setSimilarProducts(filteredProducts);
       } catch (error) {
-        console.error("Error fetching product:", error);  
-      } 
-    };
+        console.error("Error fetching product:", error);
+      }
+    };  
+  
     fetchProduct();
   }, [id]);
+
+  // useEffect(() => {
+  //   const fetchProduct = async () => {
+  //     try {
+  //       const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+  //       // const productData = response.data.find(item => item.id === parseInt(id));
+  //       setProduct(response.data);
+
+  //       const similarResponse = await axios.get("http://localhost:5000/api/products");
+  //       const filteredProducts = similarResponse.data.filter(item =>
+  //         item.category.type === product.category.type &&
+  //         item.category.gender === product.category.gender &&
+  //         item._id.toString() !== product._id.toString()
+  //     );
+  //       setSimilarProducts(filteredProducts);
+  //     } catch (error) {
+  //       console.error("Error fetching product:", error);  
+  //     } 
+  //   };
+  //   fetchProduct();
+  // }, [id]);
 
   if (!product) return <div>Loading...</div>;
 
@@ -61,8 +92,8 @@ const ProductDetailsPage = () => {
             <h4>Similar Products</h4>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px", marginTop: "10px" }}>
               {similarProducts.map(similarProduct => (
-                <div key={similarProduct.id} style={{ border: "1px solid #ccc", backgroundColor: "white", padding: "10px", borderRadius: "5px", textAlign: "center", cursor: "pointer" }}>
-                  <Link to={`/product/${similarProduct.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                <div key={similarProduct._id} style={{ border: "1px solid #ccc", backgroundColor: "white", padding: "10px", borderRadius: "5px", textAlign: "center", cursor: "pointer" }}>
+                  <Link to={`/product/${similarProduct._id}`} style={{ textDecoration: "none", color: "inherit" }}>
                     <img src={similarProduct.image[0]} alt={similarProduct.title} style={{ width: "100%", height: "120px", objectFit: "contain", marginBottom: "10px" }} />
                     <p style={{ fontWeight: "bold" }}>{similarProduct.title}</p>
                     <p>

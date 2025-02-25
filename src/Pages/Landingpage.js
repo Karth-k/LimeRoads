@@ -10,9 +10,9 @@ const Landingpage = ({ gender, type }) => {
   useEffect(() => {
     
     axios
-      .get("/data.json")
+      .get("http://localhost:5000/api/products")
       .then((response) => {
-        const filteredProducts = response.data.products.filter((product) => {
+        const filteredProducts = response.data.filter((product) => {
           if (type === "My Feed") {
             return product.category.gender === gender && product.brand_image;
           }
@@ -52,7 +52,7 @@ const Landingpage = ({ gender, type }) => {
               <div
                 className="card h-100"
                 style={{  position: "relative", borderRadius: "10px", overflow: "hidden", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"}}>
-                <img  src={product.brand_image}  className="card-img-top"  alt={product.title}  style={{ objectFit: "cover", height: "300px" }}  />
+                <img  src={product.brand_image}  className="card-img-top"  alt={product.title}  style={{ objectFit: "fill", height: "300px" }}  />
                 <div className="card-body">
                   <h5 className="card-title" style={{ fontSize: "16px" }}>{product.title}</h5>
                 </div>

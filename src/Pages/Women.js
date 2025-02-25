@@ -13,8 +13,8 @@ const Women = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/data.json");
-        const WomensProducts = response.data.products.filter((product) => product.category.gender === "Women");
+        const response = await axios.get("http://localhost:5000/api/products");
+        const WomensProducts = response.data.filter((product) => product.category.gender === "Women");
         setProducts(WomensProducts);
         setFilteredProducts(WomensProducts); 
       } catch (error) {
@@ -22,7 +22,7 @@ const Women = () => {
       }
     };
 
-    fetchData();
+    fetchData();  
   }, []);
 
   const handleFilterChange = (filteredList) => {
@@ -40,8 +40,8 @@ const Women = () => {
           <h1 className="women-title text-center my-4">Women's Products</h1>
           <div className="row">
             {filteredProducts.map((product) => (
-              <div className="women-card-container col-md-4 mb-4" key={product.id}
-                onClick={() => navigate(`/product/${product.id}`)} style={{ cursor: "pointer" }}>
+              <div className="women-card-container col-md-4 mb-4" key={product._id}
+                onClick={() => navigate(`/product/${product._id}`)} style={{ cursor: "pointer" }}>
                 <div className="women-card h-100">
                   <img src={product.image[0]} className="women-card-img-top" alt={product.title} />
                   <div className="women-card-body text-center">

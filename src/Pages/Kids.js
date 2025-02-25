@@ -14,8 +14,8 @@ const Kids = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/data.json");
-        const KidsProducts = response.data.products.filter(
+        const response = await axios.get("http://localhost:5000/api/products");
+        const KidsProducts = response.data.filter(
           (product) => product.category.gender === "Kids"
         );
         setProducts(KidsProducts);

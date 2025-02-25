@@ -16,7 +16,11 @@ import Footer from "../components/Footer";
 // import Landingpage from "../Pages/Landingpage";
 import RelatedProducts from "../Pages/RelatedProducts";
 import Buynow from "../Pages/Buynow";
-
+import RegistrationForm from "../Pages/RegistrationForm";
+import ForgotPassword from "../Pages/ForgotPassword";
+import ResetPassword from "../Pages/ResetPassword";
+import Vendor from "../Pages/Vendor";
+import VendorProdcuts from "../Pages/VendorProdcuts";
 
 const AllRoutes = ()=>{
     return(<div>
@@ -35,6 +39,11 @@ const AllRoutes = ()=>{
             <Route path="/" element={<CategorySection />} />
             <Route path="/:gender/:model/:type" element={<RelatedProducts />} />
             <Route path="/BuyNow" element={<Buynow />} />
+            <Route path="/RegistrationForm" element={<RegistrationForm />} />
+            <Route path = "/ForgotPassword" element = {<ForgotPassword/>}></Route>
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
+            <Route path='/Vendor' element={<Vendor/>}></Route>
+            <Route path ='/vendor-products' element={<VendorProdcuts/>}></Route>
         </Routes>
         
         <Footer/>
